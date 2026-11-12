@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Find out your bunny twin! </title>
-        <link rel="stylesheet" href="style.css">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bunny Twin Quiz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    </head>
+<div class="quiz-container">
 
-    <body>
-        <!-- Main window-->
-         <div class="quiz-container">
-            <h1 id="question-text"> Ready to meet your long lost friend?</h1>
-            <div id="options-container">
-
-            </div>
+<!-- Start Screen -->
+<div id="start-card">
+<img src="./startscreen.png" alt="Welcome Bunny" class="welcome-img">
+<h1>Bunny Twin Quiz~ </h1>
+<p>Your looong lost bunny twin. Take this little quiz to find out who's your litte companion!</p>
+<button id="start-btn" onclick="startQuiz()">Start Quiz</button>
 </div>
 
-<script src="script.js"></script>
-</body>
-</html>
+<!-- Question Screen -->
+<div id="quiz-card" class="hidden">
+<h2 id="question-text">Loading question...</h2>
+<div id="options-container" class="options-grid"></div>
+</div>
 
+<!-- Result Card -->
 <div id="result-card" class="hidden">
-<h2>Your Archetype</h2>
+<h2>Your Bunny Twin</h2>
+<img id="result-img" src="" alt="Result Bunny Image" class="bunny-result-img">
 <h1 id="result-title"></h1>
 <p id="result-desc"></p>
 <button id="restart-btn" onclick="restartQuiz()">Take Quiz Again</button>
 </div>
 
+</div>
 
+<script src="script.js"></script>
+</body>
+</html>
     

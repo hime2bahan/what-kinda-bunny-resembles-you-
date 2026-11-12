@@ -2,9 +2,24 @@ const questions = [
 {
 question: "What's your favorite thing to snack on after a long day?",
 options: [
-{ text: "A pizze or some burgers, some fast food is always yum", type: "foodiebunny" },
+{ text: "A pizza or some burgers, some fast food is always yum", type: "foodiebunny" },
 { text: "Some cookies, tirmasiu and cheescake.. Oh how I love sweets", type: "sweetbunny" },
 { text: "Always choose healthy, a salad or a quick sandwhich", type: "healthybunny" }
+]
+},
+{question: "Ahem... You have an exam tomorrow and you haven't studied a letter, what's the strategy?",
+options: [
+    { text: "Get in the mood, lo-fi beats a drink and many many pastel highlighters", type: "sweetbunny"},
+    { text: "Start the pomodoro, organize the material into little tasks. Breaks of strecthing and water are neccesary.", type: "healthybunny"},
+    {text: "wellll, load up the snacks, those are the gas for this journey, will be needed. Time for an all-nighter.", type: "foodiebunny"}
+
+]
+},
+{question: "What's your opinion on clothing and attire?",
+options: [
+    { text: "A cute outfit is always nice", type: "sweetbunny"},
+    { text: "Bleh, what matters is tha it's practical and convenient to wear for me.", type: "foodiebunny" },
+    { text: "I have to make sure I look presentable and neat.", type: "healthybunny" }, 
 ]
 },
 {
@@ -17,59 +32,53 @@ options: [
 }
 ];
 
-// Defining result descriptions
 const resultData = {
 sweetbunny: {
 title: "The (literally) sweet bunny",
-desc: "Awh such a sweetiepie. A combo of sweet and sensitive, fully indulging in whatever sensation that comes your way. Cute."
+desc: "Awh such a sweetiepie. A combo of sweet and sensitive, fully indulging in whatever sensation that comes your way. Cute.",
+image: "./sweetbunny.png"
 },
 foodiebunny: {
 title: "The (literally) casual bunny",
-desc: "Unbothered and chill. Life can be nice if you just live it. A foodie and a brave soul i guess. Awesome."
+desc: "Unbothered and chill. Life can be nice if you just live it. A foodie and a brave soul i guess. Awesome.",
+image: "./foodiebunny.png"
 },
 healthybunny: {
 title: "The (literally) healthy bunny",
-desc: "Such an ideal. Healthy in more than ways at once. Must be nice to live the standard. Keep it up."
+desc: "Such an ideal. Healthy in more than ways at once. Must be nice to live the standard. Keep it up.",
+image: "./healthybunny.png"
 }
 };
 
-// Tracking questions and scores
 let currentQuestionIndex = 0;
 let scores = { sweetbunny: 0, foodiebunny: 0, healthybunny: 0 };
 
-function loadQuestion() {
-// Get the current question object from our array
-const currentQ = questions[currentQuestionIndex];
+function startQuiz() {
+document.getElementById("start-card").classList.add("hidden");
+document.getElementById("quiz-card").classList.remove("hidden");
+loadQuestion();
+}
 
-// Update the HTML heading with the question text
+function loadQuestion() {
+const currentQ = questions[currentQuestionIndex];
 document.getElementById("question-text").innerText = currentQ.question;
 
-// Grab the options container and clear out any old buttons from previous questions
 const optionsContainer = document.getElementById("options-container");
 optionsContainer.innerHTML = "";
 
-// Loop through each option in the current question and build a button for it
 currentQ.options.forEach(option => {
 const button = document.createElement("button");
 button.innerText = option.text;
 button.className = "option-btn";
-
-// When clicked, record the choice and move forward
 button.onclick = () => selectOption(option.type);
-
-// Add the newly created button into the options container on your page
 optionsContainer.appendChild(button);
 });
 }
 
 function selectOption(type) {
-// Add 1 to the score of the selected category
 scores[type]++;
-
-// Move to the next question index
 currentQuestionIndex++;
 
-// If there are more questions, load the next one. Otherwise, show results!
 if (currentQuestionIndex < questions.length) {
 loadQuestion();
 } else {
@@ -78,38 +87,23 @@ showResult();
 }
 
 function showResult() {
-// Hide the question text and options container
-document.getElementById("question-text").classList.add("hidden");
-document.getElementById("options-container").classList.add("hidden");
-
-// Reveal the result card
+document.getElementById("quiz-card").classList.add("hidden");
 document.getElementById("result-card").classList.remove("hidden");
 
-// Find which bunny category scored the highest
 const winningType = Object.keys(scores).reduce((a, b) =>
 scores[a] > scores[b] ? a : b
 );
 
-// Populate the title and description from our resultData object
 const result = resultData[winningType];
 document.getElementById("result-title").innerText = result.title;
 document.getElementById("result-desc").innerText = result.desc;
+document.getElementById("result-img").src = result.image;
 }
 
 function restartQuiz() {
-// Reset state variables back to initial values
 currentQuestionIndex = 0;
 scores = { sweetbunny: 0, foodiebunny: 0, healthybunny: 0 };
 
-// Hide the result card and re-reveal the quiz elements
 document.getElementById("result-card").classList.add("hidden");
-document.getElementById("question-text").classList.remove("hidden");
-document.getElementById("options-container").classList.remove("hidden");
-
-// Load the first question again
-loadQuestion();
+document.getElementById("start-card").classList.remove("hidden");
 }
-
-// Kick off the quiz on initial page load
-loadQuestion();
-
