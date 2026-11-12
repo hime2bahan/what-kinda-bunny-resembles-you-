@@ -1,0 +1,116 @@
+
+/* Reset and global styles */
+* {
+box-sizing: border-box;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+margin: 0;
+padding: 0;
+}
+
+/* Center the quiz window on the screen */
+body {
+background-color: #f4f4f9;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+padding: 20px;
+}
+
+/* The main quiz window card */
+.quiz-container {
+background: #ffffff;
+width: 100%;
+max-width: 480px;
+padding: 32px;
+border-radius: 16px;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+border: 1px solid #eaeaea;
+}
+
+/* Initial window header style */
+#question-text {
+font-size: 1.35rem;
+color: #1a1a1a;
+margin-bottom: 24px;
+font-weight: 600;
+line-height: 1.4;
+}
+
+/* Layout container for the option buttons */
+#options-container {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+/* Individual option button styling */
+.option-btn {
+background: #f8f9fa;
+border: 2px solid #e9ecef;
+border-radius: 10px;
+padding: 14px 18px;
+font-size: 1rem;
+color: #333;
+text-align: left;
+cursor: pointer;
+transition: all 0.2s ease;
+width: 100%;
+}
+
+/* Hover effect when the user moves their mouse over a button */
+.option-btn:hover {
+background: #eef2ff;
+border-color: #6366f1;
+color: #4338ca;
+transform: translateY(-1px);
+}
+
+/* Utility class to hide elements */
+.hidden {
+display: none;
+}
+
+/* Result screen styling */
+#result-card {
+text-align: center;
+padding: 10px 0;
+}
+
+#result-card h2 {
+font-size: 0.85rem;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+color: #6b7280;
+margin-bottom: 8px;
+}
+
+#result-title {
+font-size: 1.8rem;
+color: #4338ca;
+margin-bottom: 12px;
+}
+
+#result-desc {
+font-size: 1rem;
+color: #4b5563;
+line-height: 1.6;
+margin-bottom: 24px;
+}
+
+/* Restart button styling */
+#restart-btn {
+background: #4338ca;
+color: white;
+border: none;
+padding: 12px 24px;
+border-radius: 8px;
+font-size: 1rem;
+font-weight: 500;
+cursor: pointer;
+transition: background 0.2s ease;
+}
+
+#restart-btn:hover {
+background: #3730a3;
+}
