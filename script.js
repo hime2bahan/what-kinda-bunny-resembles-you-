@@ -3,7 +3,7 @@ const questions = [
 question: "What's your favorite thing to snack on after a long day?",
 options: [
 { text: "A pizza or some burgers, some fast food is always yum", type: "foodiebunny" },
-{ text: "Some cookies, tirmasiu and cheescake.. Oh how I love sweets", type: "sweetbunny" },
+{ text: "Some cookies, tiramisu and cheescake.. Oh how I love sweets", type: "sweetbunny" },
 { text: "Always choose healthy, a salad or a quick sandwhich", type: "healthybunny" }
 ]
 },
