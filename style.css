@@ -12,6 +12,37 @@ justify-content: center;
 align-items: center;
 min-height: 100vh;
 padding: 20px;
+position: relative;
+overflow-x: hidden;
+}
+
+/* Floating Stickers  */
+.floating-stickers {
+position: fixed;
+inset: 0;
+pointer-events: none; 
+z-index: 10;
+}
+
+.sticker {
+position: absolute;
+width: 110px;
+height: auto;
+image-rendering: pixelated;
+animation: float 4s ease-in-out infinite;
+}
+
+
+.s1 { top: 15%; left: 8%; transform: rotate(-12deg); }
+.s2 { top: 38%; left: 4%; transform: rotate(8deg); animation-delay: 1s; } 
+.s3 { bottom: 15%; left: 10%; transform: rotate(10deg); animation-delay: 2s; } 
+.s4 { top: 20%; right: 9%; transform: rotate(15deg); animation-delay: 0.5s; }
+.s5 { bottom: 18%; right: 8%; transform: rotate(-10deg); animation-delay: 1.5s; }
+
+
+@keyframes float {
+0%, 100% { translate: 0 0; }
+50% { translate: 0 -8px; }
 }
 
 .quiz-container {
@@ -22,6 +53,7 @@ padding: 32px;
 border-radius: 20px;
 box-shadow: 0 10px 30px rgba(244, 114, 182, 0.15);
 border: 2px solid #fce7f3;
+z-index: 20;
 }
 
 .hidden {
@@ -138,4 +170,11 @@ transition: background 0.2s ease;
 
 #start-btn:hover, #restart-btn:hover {
 background: #be185d;
+}
+
+
+@media (max-width: 900px) {
+.floating-stickers {
+display: none;
+}
 }
